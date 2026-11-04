@@ -22,6 +22,7 @@ abstract class Person{
     public int getId() {
         return this.id;
     }
+
     Person(String name, int id){
         this.name = name;
         this.id = id;
@@ -136,20 +137,6 @@ class Course implements Storable{
     }
 }
 
-class Faculty extends Person {
-    private String department;
-
-    Faculty(String name, int id, String department) {
-        super(name, id);
-        this.department = department;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.printf("Faculty: %s (ID %d), Department: %s%n", getName(), getId(), department);
-    }
-}
-
 class RegistrationSystem{
     static final int MAXCREDITS = 20;
 
@@ -157,7 +144,6 @@ class RegistrationSystem{
     HashMap<String, Course> courseList= new HashMap<>();
         
     void addStudent(Student s) throws RegistrationException{
-
         if (studentsList.containsKey(s.getId())){
             throw new RegistrationException("Student already exists.");
         }
